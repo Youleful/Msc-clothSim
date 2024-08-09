@@ -1,0 +1,58 @@
+#version 430 core
+#extension GL_ARB_compute_shader: enable
+#extension GL_ARB_shader_storage_buffer_object: enable
+
+// work group size injected before compilation
+#define WORK_GROUP_SIZE_X XX
+#define WORK_GROUP_SIZE_Y XX
+
+layout(std430, binding = 0) readonly buffer prePosBuffer { // cloth positions in previous timestep
+    vec4 prePos[];
+};
+layout(std430, binding = 1) buffer curPosBuffer { // cloth positions in new timestep. correct these.
+    vec4 curPos[];
+};
+layout(std430, binding = 2) readonly buffer CollisionConstraintsBuffer { // vec4s of dir and distance 
+    vec4 pClothCollisionConstraints[];
+};
+
+layout(local_size_x = WORK_GROUP_SIZE_X, local_size_y = WORK_GROUP_SIZE_Y, local_size_z = 1) in;
+
+layout(location = 0) uniform int numPositions;
+
+layout(location = 1) uniform float bounceFactor;
+
+void main() {
+    uint idx = gl_GlobalInvocationID.x;
+    if (idx >= numPositions) return;
+
+	vec4 constraint = pClothCollisionConstraints[idx];
+	if (constraint.w < -0.01) { // no correction
+		return;
+	}
+
+    vec3 posOldTimestep = prePos[idx].xyz;
+	vec3 posNewTimestep = curPos[idx].xyz;
+	vec3 dir = posNewTimestep - posOldTimestep;
+	vec3 isx = dir * constraint.w + posOldTimestep;
+
+	//pCloth2[idx].xyz = isx; // test
+	//pCloth2[idx].w = -10.0;
+
+	// muller: C = (p - q) dot n
+	// isx = q
+	// posNewTimestep = p
+	// constraint.xyz = n
+	// also from muller: dP = s * wi * dC
+	// s = C / (dC ^ 2) for all P involved in C
+
+	// idea is: we have an intersection point and a curr point
+	// these form a vector going into the surface
+	// we get a resolved curr point by projecting back along the surface normal
+	// unsigned scalar of this projection is none other than (p - q) dot n.norm
+	// we're assuming n is already normalized
+
+	vec3 correction = dot( posNewTimestep - isx, constraint.xyz) * (1.0 + bounceFactor) * constraint.xyz;
+
+	curPos[idx].xyz += correction;
+}

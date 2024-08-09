@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\glslUtility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\utilityCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\nbody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\cloth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\rbody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\simulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\glslUtility.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\utilityCore.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\nbody.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\cloth.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\rbody.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\mesh.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\simulation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Leeds\HomeWork\Msc\GPU_cloth\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B65B01DD-F5D4-3169-89DD-7AB0B508E9B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0E314A29-0AA7-340A-8E83-86B46A34E941}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
